@@ -1,0 +1,29 @@
+public Queue() mergeSort(Queue() unsortedQueue){
+	if(unsortedQueue.isEmpty){
+		return null						//null could cause issues 
+	}
+	Queue() unsortedQueue_storage = new Queue()			//hold unsortedQueue in a storage queue to not loose initial queue
+	unsortedQueue_storage = unsortedQueue
+	pivot = unsortedQueue.front
+	unsortedQueue.dequeue
+	Queue() bigQ = new Queue()
+	Queue() smallQ = new Queue()
+	while (!unsortedQueue.isEmpty){
+		if(unsortedQueue.front > pivot){
+			bigQ.enqueue(unsortedQueue.front)
+			unsortedQueue.dequeue
+		} else {
+			smallQ.enqueue(unsortedQueue.front)
+			unsortedQueue.dequeue
+		}
+	}
+	smallQ = mergeSort(smallQ)
+	bigQ = mergeSort(bigQ)
+	smallQ.enqueue(pivot)				//add pivot to middle
+	while(!bigQ.isEmpty){				//merge both queues
+		smallQ.enqueue(bigQ.front)
+		bigQ.dequeue
+	}
+	unsortedQueue = unsortedQueue_storage
+	return smallQ
+	}
